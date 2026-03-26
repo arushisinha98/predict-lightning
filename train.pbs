@@ -1,0 +1,37 @@
+#!/bin/bash
+#PBS -N lightning_train
+#PBS -o lightning_train.o${PBS_JOBID}
+#PBS -e lightning_train.e${PBS_JOBID}
+#PBS -l select=1:ncpus=8:ngpus=1:mem=48gb
+#PBS -l walltime=24:00:00
+
+set -euo pipefail
+
+# Ensure pixi is available
+export PATH="/rds/general/user/as4623/home/.pixi/bin:$PATH"
+
+# Change to the directory where you submitted the job
+cd "$PBS_O_WORKDIR"
+
+# Install environment and preprocess full dataset before splitting for training.
+pixi install
+
+pixi run preprocess-hdf5 \
+  --input-h5 data/train.h5 \
+  --output-h5 data/preprocess_train.h5 \
+  --summary-csv data/preprocess_summary_train.csv \
+  --figures-dir figures/preprocess_train \
+  --direction down \
+  --max-events -1
+
+pixi run train-model \
+  --data-path data/preprocess_train.h5 \
+  --model unet \
+  --loss bce \
+  --epochs 200 \
+  --batch-size 8 \
+  --num-workers 4 \
+  --val-ratio 0.2 \
+  --seed 42 \
+  --checkpoint-dir models/unet \
+  --device cuda
