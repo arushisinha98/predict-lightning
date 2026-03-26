@@ -20,7 +20,7 @@ pixi run preprocess-hdf5 \
   --input-h5 data/train.h5 \
   --output-h5 data/preprocess_train.h5 \
   --summary-csv data/preprocess_summary_train.csv \
-  --figures-dir figures/preprocess_train \
+  --figures-dir figures/preprocess \
   --direction down \
   --max-events -1
 

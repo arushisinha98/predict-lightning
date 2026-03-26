@@ -32,6 +32,15 @@ pixi run preprocess-hdf5
 
 ```bash
 # preprocess train dataset
+pixi run preprocess-hdf5 \
+  --input-h5 data/train.h5 \
+  --output-h5 data/preprocess_train.h5 \
+  --summary-csv data/preprocess_summary_train.csv \
+  --figures-dir figures/preprocess \
+  --direction down \
+  --max-events -1
+
+# train model
 pixi run train-model \
     --data-path data/preprocessed_train.h5 \
     --model unet \
