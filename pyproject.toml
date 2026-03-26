@@ -1,0 +1,7 @@
+[project]
+name = "predict-lightning"
+version = "0.1.0"
+description = "Lightning Prediction Tool"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
