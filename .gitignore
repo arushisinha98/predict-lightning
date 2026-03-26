@@ -13,5 +13,8 @@ wheels/
 !.pixi/config.toml
 
 # log files
-*.o
-*.e
+*.o*
+*.e*
+
+# csv files
+*.csv
