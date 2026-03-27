@@ -1,4 +1,10 @@
-# Predict Lightning
+<div align="center">
+   <h1>Predict Lightning</h1>
+   <p>
+      <img src="https://img.shields.io/badge/license-%20%20GNU%20GPLv3%20-green?style=plastic">
+      <img src="https://img.shields.io/badge/python-3.9+-blue.svg">
+   </p>
+</div>
 
 ## Get started
 
