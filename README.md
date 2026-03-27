@@ -42,12 +42,13 @@ pixi run preprocess-hdf5 \
 
 # train model
 pixi run train-model \
-    --data-path data/preprocessed_train.h5 \
+    --data-path data/preprocess_train.h5 \
     --model unet \
     --loss multitask \
-    --epochs 100 \
+    --epochs 50 \
     --batch-size 8 \
-    --num-workers 1 \
+    --num-workers 4 \
+    --val-ratio 0.2 \
     --seed 42 \
     --checkpoint-dir models/unet \
     --device gpu
