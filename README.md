@@ -57,9 +57,18 @@ pixi run train-model \
 ## Predict on unseen
 
 ```bash
+# preprocess train dataset
+pixi run preprocess-hdf5 \
+  --input-h5 data/surprise-task4.h5 \
+  --output-h5 data/preprocess_surprise.h5 \
+  --summary-csv data/preprocess_summary_surprise.csv \
+  --figures-dir figures/surprise \
+  --direction down \
+  --max-events -1
+
 pixi run predict \
     --model models/unet \
-    --data-path data/test.h5 \
+    --data-path data/preprocess_surprise.h5 \
     --device gpu
 ```
 Example predictions of lighting, visualized on top of the cloud evolution. Frames are at 5 minute intervals.
